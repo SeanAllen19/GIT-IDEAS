@@ -16,7 +16,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// ! Needs testing ! Updates note by id in database, specifies user_id must match session 
+// Updates note by id in database, specifies user_id must match session 
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const updatedNote = await Notes.update(req.body, {

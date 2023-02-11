@@ -1,58 +1,36 @@
 const router = require('express').Router();
 const { User, Notes } = require('../models');
+// Use withAuth middleware to limit route access to only users who've logged in
 const withAuth = require('../utils/auth');
 
 // Replace res.status(200)s with renders when ready to test with handlebars layouts
-  
-// Use withAuth middleware to prevent access to route
-router.get('/', withAuth, async (req, res) => {
-    try {
-      // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: Project }],
-      });
-  
-      const user = userData.get({ plain: true });
-  
-      res.render('profile', {
-        ...user,
-        logged_in: true
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-});
 
-router.get('/notes/:id', withAuth, async (req, res) => {
+// Gets a users notes by id to render to dashboard by id
+  // Allows for users to see eachother's dashboards
+  // Dashboard link on homepage nav will use session.user_id in its link to get current users dashboard
+router.get('/:id', withAuth, async (req, res) => {
     try {
-        const projectData = await Notes.findByPk({
+        const notesData = await Notes.findAll({
             where: {
-                user_id: req.session.user_id,
+                user_id: req.params.id,
             }
         });
 
-        const project = projectData.get({ plain: true });
+        if (!notesData.length) {
+          res.status(404).json({ message: 'No notes found for this user!' });
+          return;
+        }
 
-        res.render('project', {
-        ...project,
-        logged_in: req.session.logged_in
-        });
+        const notes = notesData.map((notes) => notes.get({ plain: true }));
+
+        // res.render('dashboard', {
+        // notes,
+        // logged_in: req.session.logged_in
+        // });
+        res.status(200).json(notes);
     } catch (err) {
         res.status(500).json(err);
     }
-});
-  
-router.get('/login', (req, res) => {
-    // If the user is already logged in, redirect the request to another route
-    if (req.session.logged_in) {
-    //   res.redirect('/');
-        res.status(200).json("user loggged in: redirects to homepage");
-        return;
-    }
-
-    // res.render('login');
-    res.status(200).json("user not logged in: renders 'login' page");
 });
   
 module.exports = router;
