@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS ideas_db;
+
+CREATE DATABASE ideas_db;
