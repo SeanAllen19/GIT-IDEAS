@@ -5,9 +5,13 @@ const withAuth = require('../utils/auth');
 
 // Replace res.status(200)s with renders when ready to test with handlebars layouts
 
-// Gets a users notes by id to render to dashboard by id
+// Redirects current user to their own dashboard
+router.get('/', withAuth, async (req, res) => {
+  res.redirect(`dashboard/${req.session.user_id}`);
+});
+
+// Gets a users notes to render to dashboard by id
   // Allows for users to see eachother's dashboards
-  // Dashboard link on homepage nav will use session.user_id in its link to get current users dashboard
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const notesData = await Notes.findAll({
