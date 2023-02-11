@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { Note } = require('../../models');
+const { Notes } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Inserts new note into database by session user_id
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newNote = await Note.create({
+    const newNote = await Notes.create({
       ...req.body,
       user_id: req.session.user_id,
     });
@@ -15,9 +16,10 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+// ! Needs testing ! Updates note by id in database, specifies user_id must match session 
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        const updatedNote = await Note.update(req.body, {
+        const updatedNote = await Notes.update(req.body, {
             where: {
                 id: req.params.id,
                 user_id: req.session.user_id,
@@ -35,9 +37,10 @@ router.put('/:id', withAuth, async (req, res) => {
     };
 });
 
+// Deletes note from database, specifies user_id must match session
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const noteData = await Note.destroy({
+    const noteData = await Notes.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
