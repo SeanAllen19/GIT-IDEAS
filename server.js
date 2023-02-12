@@ -65,9 +65,9 @@ sequelize.sync({ force: false }).then(() => {
 
 
 
-// app.get('/', (req,res) => {
-//     res.render('homepage', {layout: 'main'})
-// })
+app.get('/', (req,res) => {
+    res.render('homepage', {layout: 'main'})
+})
 
 // app.listen(PORT, () =>
 // console.log(
