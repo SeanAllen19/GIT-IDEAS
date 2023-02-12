@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Notes extends Model {}
+class Tags extends Model {}
 
-Notes.init(
+Tags.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,25 +11,9 @@ Notes.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    link: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    tag_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "tags",
-        key: "id",
-      },
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -44,8 +28,8 @@ Notes.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "notes",
+    modelName: "tags",
   }
 );
 
-module.exports = Notes;
+module.exports = Tags;

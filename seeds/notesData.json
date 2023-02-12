@@ -2,21 +2,25 @@
   {
     "link": "https://github.com/",
     "description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
-    "tag": "proj2"
+    "tag_id": 1,
+    "user_id": 1
   },
   {
     "link": "https://github.com/",
     "description": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
-    "tag": "easy"
+    "tag_id": 2,
+    "user_id": 1
   },
   {
     "link": "https://github.com/",
     "description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
-    "tag": "quick"
+    "tag_id": 3,
+    "user_id": 2
   },
   {
     "link": "https://github.com/",
     "description": "increasingly challenging mazes.",
-    "tag": "some day"
+    "tag_id": 4,
+    "user_id": 3
   }
 ]
