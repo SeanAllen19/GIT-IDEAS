@@ -1,30 +1,25 @@
 const router = require('express').Router();
-const { User, Notes } = require('../models');
+// const { User, Notes } = require('../models');
 // const withAuth = require('../utils/auth');
 
 // render homepage template
 router.get('/', async (req, res) => {
-    try{
-        const notesData = await Notes.findAll({
-            limit: 10,
-            order: [
-                ['date_created', 'DESC']
-            ]
-        });
-
-        const notes = notesData.map((notes) => notes.get({ plain: true }));
-
-        res.render('homepage', {
-            notes,
-            logged_in: req.session.logged_in
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    };
+    res.render('homepage', {
+        logged_in: req.session.logged_in
+    });
 });
 
+// render login template
 router.get('/login', async (req, res) => {
     res.render('login');
+});
+
+// render newNote template from search result id
+router.get('/search/:id', async (req, res) => {
+    res.render('newNote', {
+        user_id: req.session.user_id,
+        logged_in: req.session.logged_in
+    });
 });
 
 module.exports = router;
