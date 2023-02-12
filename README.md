@@ -1,3 +1,6 @@
+<!-- Brett's Note: I'd like to take this on if possible. I love doing READMEs and would appreciate being able to blow thit one out into something nice.  -->
+
+
 # GIT-IDEAS
 
 ## Description
