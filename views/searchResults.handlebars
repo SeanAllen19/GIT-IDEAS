@@ -2,9 +2,26 @@
 {{!-- results are clickable and take the user to 'newNote' page to be viewed/saved --}}
 <div>
     {{#each resultObject}}
-    <a href="/results/1"><div>
-    <h1>{{name}}</h1>
-    <p><a href="#">repo-link</a>, repoDescription, language</p>
-    </div></a>
+    <div class="card text-center p-4 mb-4 bg-transparent border-opacity-10">
+    <div class="card-body">
+    <a href="/results/1"><h2 class="card-title">{{name}}</h2></a>
+    <p class="card-text">{{description}}</p>
+    <a href="{{link}}" class="btn btn-primary">Go to Repo</a>
+  </div>
+</div>
+
     {{/each}}
 </div>
+
+{{!-- <div class="card text-center p-4 mb-4 bg-transparent border-opacity-10">
+    <div class="card-body">
+    <a href="/results/1"><h2 class="card-title">PokemonGo-Map</h2></a>
+    <p class="card-text">🌏 Live visualization of all the pokemon in your area... and more! (shutdown)</p>
+    <a href="https://github.com/AHAAAAAAA/PokemonGo-Map" class="btn btn-primary">Go to Repo</a>
+  </div>
+</div>
+
+ <a href="/results/1"><div>
+    <h1>{{name}}</h1>
+    <p><a href="#">repo-link</a>, repoDescription, language</p>
+    </div></a> --}}
