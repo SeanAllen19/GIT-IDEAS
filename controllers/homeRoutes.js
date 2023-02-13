@@ -29,7 +29,7 @@ try {
 
     res.redirect('/results');
 } catch (err) {
-    res.status(500).json({message: 'No good'})
+    res.status(500).json({message: '/search/:query no good'})
 }
 })
 
@@ -42,15 +42,27 @@ router.get('/results', async (req, res) => {
 
 // render newNote template from search result id
 router.get('/results/:id', async (req, res) => {
-    
-    const objectOne = resultObject[0];
-    console.log('ObjectOne', objectOne);
+    try{
+        const objectOne = resultObject[0];
+        console.log('ObjectOne', objectOne);
 
-    res.render('newNote', {
-        objectOne,
-        user_id: req.session.user_id,
-        logged_in: req.session.logged_in
-    });
+        const userTags = await Tags.findAll({
+            where: {
+                user_id: 2
+            }
+        })
+
+        const tags = userTags.map((tag) =>tag.get({ plain: true }));
+
+        res.render('notableResult', {
+            tags,
+            objectOne,
+            user_id: req.session.user_id,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json({message: '/results/:id no good!'})
+    }
 });
 
 // render login template
@@ -63,16 +75,14 @@ router.get('/tagmanager', async (req, res) => {
     try {
         const userData = await Tags.findAll();
     
-        const tags = userData.map((tag) =>
-      tag.get({ plain: true })
-      );
+        const tags = userData.map((tag) =>tag.get({ plain: true }));
 
         res.render('tagManager', {
             tags,
             logged_in: req.session.logged_in
         });
     } catch (err) {
-        res.status(500).json({message: 'no good!'})
+        res.status(500).json({message: '/tagmanager no good!'})
     };
 });
 
