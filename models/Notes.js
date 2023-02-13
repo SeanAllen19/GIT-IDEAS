@@ -11,12 +11,25 @@ Notes.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    fullName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     link: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
+    },
+    language: {
+      type: DataTypes.STRING,
+    },
+    license: {
+      type: DataTypes.STRING,
+    },
+    stargazers_count: {
+      type: DataTypes.INTEGER,
     },
     date_created: {
       type: DataTypes.DATE,
