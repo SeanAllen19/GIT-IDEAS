@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Notes, Tags } = require('../models');
 const axios = require('axios');
 // const withAuth = require('../utils/auth');
-
+var resultObject = [];
 // render homepage template
 router.get('/', async (req, res) => {
     res.render('homepage', {
@@ -15,14 +15,12 @@ try {
     const searchTerm = req.params.query;
     console.log(searchTerm);
 
-    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}`;
+    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=10`;
     console.log(queryStr)
 
     const results = await axios.get(queryStr);
 
-    console.log(results.data.items)
 
-    let resultObject = [];
     results.data.items.forEach((item) => {
         resultObject.push({name: item.name});
     });
@@ -32,6 +30,7 @@ try {
         resultObject,
         logged_in: req.session.logged_in
     });
+
 } catch (err) {
     res.status(500).json({message: 'No good'})
 }
@@ -43,8 +42,13 @@ router.get('/login', async (req, res) => {
 });
 
 // render newNote template from search result id
-router.get('/note/:id', async (req, res) => {
+router.get('/result/:id', async (req, res) => {
+    
+    const objectOne = resultObject[0];
+    console.log('ObjectOne', objectOne);
+    
     res.render('newNote', {
+        objectOne,
         user_id: req.session.user_id,
         logged_in: req.session.logged_in
     });
