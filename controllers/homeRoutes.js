@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Notes, Tags } = require('../models');
+const axios = require('axios');
 // const withAuth = require('../utils/auth');
 
 // render homepage template
@@ -9,24 +10,31 @@ router.get('/', async (req, res) => {
     });
 });
 
-// ! NOT WORKING !
-router.post('/', (req, res) => {
-    try {
-    const items = req.body;
+router.get('/search/:query', async (req, res) => {
+try {
+    const searchTerm = req.params.query;
+    console.log(searchTerm);
 
-    const newItems = items.map((item) =>
-      item.get({ plain: true })
-      );
+    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}`;
+    console.log(queryStr)
 
-    console.log(newItems)
+    const results = await axios.get(queryStr);
 
-    res.status(200).render('searchResults', {
-        newItems,
+    console.log(results.data.items)
+
+    let resultObject = [];
+    results.data.items.forEach((item) => {
+        resultObject.push({name: item.name});
+    });
+    console.log(resultObject)
+
+    res.render('searchResults', {
+        resultObject,
         logged_in: req.session.logged_in
     });
 } catch (err) {
-    res.status(500).json({message: 'no good!'})
-};
+    res.status(500).json({message: 'No good'})
+}
 })
 
 // render login template
@@ -35,7 +43,7 @@ router.get('/login', async (req, res) => {
 });
 
 // render newNote template from search result id
-router.get('/search/:id', async (req, res) => {
+router.get('/note/:id', async (req, res) => {
     res.render('newNote', {
         user_id: req.session.user_id,
         logged_in: req.session.logged_in
