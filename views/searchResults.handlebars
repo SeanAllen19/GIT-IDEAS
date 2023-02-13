@@ -1,0 +1,11 @@
+{{!-- from public js: rendered after search button is clicked, populated by github search results --}}
+{{!-- results are clickable and take the user to 'newNote' page to be viewed/saved --}}
+<div>
+    {{#each newItems}}
+    {{!-- <a href="/search/1"><div> --}}
+    <h1>{{name}}</h1>
+    {{!-- <h2>{{repoURL}}</h2>
+    <p><a href="{{repoURL}}">repo-link</a>, {{repoDescription}}, {{language}}</p>
+    </div></a> --}}
+    {{/each}}
+</div>
