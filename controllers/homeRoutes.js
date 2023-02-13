@@ -16,14 +16,22 @@ try {
     console.log(searchTerm);
 
     resultObject = [];
-    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=10`;
+    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=8`;
     console.log(queryStr)
 
     const results = await axios.get(queryStr);
 
 
     results.data.items.forEach((item) => {
-        resultObject.push({name: item.name, id: item.id});
+        resultObject.push(
+            {
+            name: item.name, 
+            id: item.id,
+            link: item.html_url,
+            description: item.description
+            
+            }
+        );
     });
     console.log(resultObject)
 
