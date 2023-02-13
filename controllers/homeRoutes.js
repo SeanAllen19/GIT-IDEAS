@@ -15,15 +15,23 @@ try {
     const searchTerm = req.params.query;
     console.log(searchTerm);
 
-    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=10`;
+    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=8`;
     console.log(queryStr)
 
+    resultObject = [];
     const results = await axios.get(queryStr);
-
-
+    
     results.data.items.forEach((item) => {
-        resultObject.push({name: item.name});
+        resultObject.push(
+            {
+            name: item.name,
+            description: item.description,
+            link: item.html_url,
+            language: item.language
+
+            });
     });
+
     console.log(resultObject)
 
     res.render('searchResults', {
