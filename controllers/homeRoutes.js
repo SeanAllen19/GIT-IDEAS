@@ -97,6 +97,7 @@ router.get('/tagmanager', async (req, res) => {
 router.get('/saved', async (req, res) => {
     try{
         const userNotes = await Notes.findAll({
+            include: [{ model: Tags }],
             where: {
                 user_id: 1
             },
