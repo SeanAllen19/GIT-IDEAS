@@ -13,9 +13,9 @@ const deleteNote = async (event) => {
 const saveNote = async (event) => {
     event.preventDefault();
     console.log(event.target.dataset.noteid);
-    const userComment = document.querySelector("#comment-textarea").value.trim();
-    const newTag = document.querySelector("#newTag").value.trim();
-    const chosenTag = document.querySelector("#chooseTag").value.trim();
+    const userComment = event.target.querySelector("#comment-textarea").value.trim();
+    const newTag = event.target.querySelector("#newTag").value.trim();
+    const chosenTag = event.target.querySelector("#chooseTag").value.trim();
 
     if (userComment && newTag) {
         let newTagBody = { title: newTag };
