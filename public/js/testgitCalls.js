@@ -3,7 +3,7 @@ event.preventDefault();
 
   const query = document.querySelector('#repo-search-input').value
   console.log(query)
-
+// if !query then query = null
   document.location.replace(`/search/${query}`);
 }
 
