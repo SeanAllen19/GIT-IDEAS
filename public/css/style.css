@@ -34,7 +34,7 @@ body, html {
   align-items: center;
 }
 
-/* makes result cars a but smaller */
+/* makes result cards a bit smaller */
 .result-card {
   width: 75%;
   margin: 20px;
