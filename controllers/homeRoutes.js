@@ -23,7 +23,6 @@ try {
 
 
     results.data.items.forEach((item) => {
-<<<<<<< HEAD
         resultObject.push(
             {
             name: item.name, 
@@ -33,9 +32,6 @@ try {
             
             }
         );
-=======
-        resultObject.push({name: item.name, id: item.id});
->>>>>>> 5b1132a (fixed sql and login logout js work)
     });
     console.log(resultObject)
 
