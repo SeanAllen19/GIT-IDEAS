@@ -12,7 +12,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }
@@ -22,9 +22,9 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#exampleInputUsername1').value.trim();
-  const email = document.querySelector('#exampleInputEmail1').value.trim();
-  const password = document.querySelector('#exampleInputPassword1').value.trim();
+  const name = document.querySelector('#exampleInputUsername2').value.trim();
+  const email = document.querySelector('#exampleInputEmail2').value.trim();
+  const password = document.querySelector('#exampleInputPassword2').value.trim();
 
   if (name && email && password) {
     const response = await fetch('/api/users', {
@@ -34,7 +34,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }
