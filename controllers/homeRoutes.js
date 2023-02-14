@@ -13,14 +13,11 @@ router.get('/', async (req, res) => {
 router.get('/search/:query', async (req, res) => {
 try {
     const searchTerm = req.params.query;
-    console.log(searchTerm);
 
     resultObject = [];
     const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=8`;
-    console.log(queryStr)
 
     const results = await axios.get(queryStr);
-
 
     results.data.items.forEach((item) => {
         resultObject.push(
@@ -99,21 +96,19 @@ router.get('/saved', async (req, res) => {
         const userNotes = await Notes.findAll({
             include: [{ model: Tags }],
             where: {
-                user_id: 1
+                user_id: req.session.user_id
             },
         });
 
         const notes = userNotes.map((note) =>note.get({ plain: true }));
-        console.log(notes)
 
         const userTags = await Tags.findAll({
             where: {
-                user_id: 1
+                user_id: req.session.user_id
             }
         });
 
         const tags = userTags.map((tag) =>tag.get({ plain: true }));
-        console.log(tags)
 
         res.render('savedNotes', {
             tags,
