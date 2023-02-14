@@ -22,6 +22,9 @@ Notes.init(
     description: {
       type: DataTypes.STRING,
     },
+    comment: {
+      type: DataTypes.STRING,
+    },
     language: {
       type: DataTypes.STRING,
     },
