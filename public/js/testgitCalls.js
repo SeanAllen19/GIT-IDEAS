@@ -16,4 +16,3 @@ document
   .addEventListener('submit', getRepoInfo);
 
 
-console.log('ahhhhhhhh')
