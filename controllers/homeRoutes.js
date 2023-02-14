@@ -98,28 +98,30 @@ router.get('/saved', async (req, res) => {
     try{
         const userNotes = await Notes.findAll({
             where: {
-                user_id: 2
-            }
+                user_id: 1
+            },
         });
 
         const notes = userNotes.map((note) =>note.get({ plain: true }));
+        console.log(notes)
 
         const userTags = await Tags.findAll({
             where: {
-                user_id: 2
+                user_id: 1
             }
         });
 
         const tags = userTags.map((tag) =>tag.get({ plain: true }));
+        console.log(tags)
 
-        res.render('notableResult', {
+        res.render('savedNotes', {
             tags,
             notes,
             user_id: req.session.user_id,
             logged_in: req.session.logged_in
         });
     } catch (err) {
-        res.status(500).json({message: '/results/:id no good!'});
+        res.status(500).json({message: '/saved no good!'});
     }
 });
 

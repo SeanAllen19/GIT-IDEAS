@@ -26,3 +26,30 @@ body, html {
   transform: translate(-50%, -50%);
   color: white;
 }
+
+/* centers results in a column */
+.result-list-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* makes result cars a but smaller */
+.result-card {
+  width: 75%;
+  margin: 20px;
+  background: transparent !important;
+}
+
+/* makes accordion button look less weird */
+.accordion-button {
+  width: auto !important;
+  box-shadow: none !important;
+}
+
+/* erases colors we dont want on our accordions */
+* {
+  --bs-accordion-bg: transparent !important;
+  --bs-accordion-active-bg: transparent !important;
+  --bs-accordion-btn-focus-border-color: transparent !important;
+}
