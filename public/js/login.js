@@ -5,11 +5,7 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#exampleInputPassword1').value.trim();
 
   if (email && password) {
-    const response = await fetch('/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const response = await axios.post(`/api/users/login`,{email, password});
 
     if (response.ok) {
       document.location.replace('/');
@@ -27,11 +23,7 @@ const signupFormHandler = async (event) => {
   const password = document.querySelector('#exampleInputPassword2').value.trim();
 
   if (username && email && password) {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ username, email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const response = await axios.post('/api/users',{username, email, password});
 
     if (response.ok) {
       document.location.replace('/');
