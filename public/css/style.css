@@ -54,3 +54,7 @@ body, html {
   --bs-accordion-active-bg: transparent !important;
   --bs-accordion-btn-focus-border-color: transparent !important;
 }
+
+#comment-textarea {
+  background: transparent !important;
+}

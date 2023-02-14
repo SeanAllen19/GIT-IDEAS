@@ -1,53 +1,54 @@
-
-    {{!-- display user-tags --}}
-{{!-- <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-  <label class="btn btn-outline-primary" for="btnradio1">All</label>
-{{#each tags}}
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-  <label class="btn btn-outline-primary" for="btnradio2">{{title}}</label>
-{{/each}}
-</div> --}}
-    {{!-- displays user's saved notes, notes are clickable and take the user to the note's 'edit' page --}}
 {{#each notes}}
 <div class="result-list-div">
-  <div class="card result-card">
-    <div class="card-body">
-      <h1>{{description}}</h1>
-      <div class="accordion accordion-flush" id="accordionFlushExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="flush-headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapse{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
-              Edit
-            </button>
-          </h2>
-          <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-            data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">
-              <form>
-                <div class="mb-3">
-                  <input type="comment" placeholder="Add a comment" class="form-control w-50" id="comment"
-                    aria-describedby="comment">
-                </div>
-                <div class="mb-3">
-                  <label for="newTag" class="form-label">Change Tag:</label>
-                  <input type="newTag" class="form-control w-25" id="newTag" aria-describedby="newTag">
-                  <select class="form-select w-25" aria-label="Default select example">
-                    <option selected>Choose a Tag</option>
+<div class="card result-card">
+  <div class="card-body">
+    <h1>{{fullName}}</h1>
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+        View/Edit 
+      </button>
+    </h2>
+    <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <a href="{{link}}">{{link}}</a>
+        <p>
+        {{#if language}}
+        <b>Language:</b> {{language}} | 
+        {{/if}}
+        {{#if stargazers_count}}
+        <b>Stargazers:</b> {{stargazers_count}} 
+        {{/if}}
+        {{#if license}}
+        | <b>License:</b> {{license}}
+        {{/if}}
+        </p>
+        <p>"{{description}}"</p>
+        <form class="editNote-form" data-noteid={{id}}>
+            <div class="mb-3">
+              <textarea class="commentText form-control" id="comment-textarea" rows="3">{{comment}}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="newTag" class="form-label">Change Tag:</label>
+                <input type="newTag" class="newTag form-control w-25" id="newTag" aria-describedby="newTag">
+                <select class="chooseTag form-select w-25" id="chooseTag" aria-label="tag-select">
+                    <option value="{{tag.id}}" selected>{{tag.title}}</option>
                     {{#each ../tags}}
                     <option value="{{id}}">{{title}}</option>
                     {{/each}}
-                  </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
-              </form>
+                </select>
             </div>
-          </div>
-        </div>
-      </div>
+            <button type="submit" data-noteid={{id}} class="btn btn-saveNote btn-primary">Save</button>
+            <button type="click" data-noteid={{id}} class="btn btn-deleteNote btn-danger" style="float:right;">Delete</button>
+        </form>
     </div>
   </div>
 </div>
+</div>
+</div>
+</div>
+</div>
 {{/each}}
+
+<script src="./js/editNotes.js"></script>
