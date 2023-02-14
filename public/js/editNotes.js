@@ -13,37 +13,30 @@ const deleteNote = async (event) => {
 const saveNote = async (event) => {
     event.preventDefault();
     console.log(event.target.dataset.noteid);
-    const comment = document.querySelector("#comment-textarea").value.trim();
+    const userComment = document.querySelector("#comment-textarea").value.trim();
     const newTag = document.querySelector("#newTag").value.trim();
-    var chosenTag = document.querySelector("#chooseTag").value.trim();
+    const chosenTag = document.querySelector("#chooseTag").value.trim();
 
-    console.log('comment:', comment);
+    if (userComment && newTag) {
+        let newTagBody = { title: newTag };
+        let createTagRes = await axios.post('/api/tags', newTagBody);
 
-    if (!newTag) {
-        console.log('No tag')
+        let noteBody = { comment: userComment, tag_id: createTagRes.data.id };
+        let updateNoteRes = await axios.put(`/api/notes/${event.target.dataset.noteid}`, noteBody);
+
+        console.log(updateNoteRes.statusText);
+
+    } else if (userComment && chosenTag) {
+        let noteBody = { comment: userComment, tag_id: chosenTag };
+        let updateNoteRes = await axios.put(`/api/notes/${event.target.dataset.noteid}`, noteBody);
+
+        console.log(updateNoteRes.statusText);
     } else {
-    console.log('newTag:', newTag);
-    };
+        let noteBody = { comment: '', tag_id: chosenTag };
+        let updateNoteRes = await axios.put(`/api/notes/${event.target.dataset.noteid}`, noteBody);
 
-    // if (tagChoice) {
-    //     console.log('selected another tag')
-    // } else {
-    // console.log('tagChoice:', tagChoice);
-    // };
-
-    if (chosenTag === 'null') {
-        console.log('no chosen tag')
-    } else {
-      console.log(chosenTag)
-    };
-
-    // const response = await axios.put(`/api/notes/${event.target.dataset.noteid}`, );
-//   if (response.ok) {
-//     console.log('Note deleted!')
-//     // document.location.replace("/");
-//   } else {
-//     alert(response.statusText);
-//   }
+        console.log(updateNoteRes.statusText);
+    }
 };
 
 const deleteBtns = document.querySelectorAll(".btn-deleteNote")

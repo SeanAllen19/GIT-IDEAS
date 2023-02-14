@@ -25,7 +25,7 @@
         {{/if}}
         </p>
         <p>"{{description}}"</p>
-        <form class="editNote-form">
+        <form class="editNote-form" data-noteid={{id}}>
             <div class="mb-3">
               <textarea class="commentText form-control" id="comment-textarea" rows="3">{{comment}}</textarea>
             </div>
@@ -33,7 +33,7 @@
                 <label for="newTag" class="form-label">Change Tag:</label>
                 <input type="newTag" class="newTag form-control w-25" id="newTag" aria-describedby="newTag">
                 <select class="chooseTag form-select w-25" id="chooseTag" aria-label="tag-select">
-                    <option value="null" selected>{{tag.title}}</option>
+                    <option value="{{tag.id}}" selected>{{tag.title}}</option>
                     {{#each ../tags}}
                     <option value="{{id}}">{{title}}</option>
                     {{/each}}
