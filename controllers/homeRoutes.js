@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { User, Notes, Tags } = require('../models');
 const axios = require('axios');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 var resultObject = [];
+
+
 // render homepage template
 router.get('/', async (req, res) => {
     res.render('homepage', {
@@ -56,7 +58,7 @@ router.get('/results/:id', async (req, res) => {
 
         const userTags = await Tags.findAll({
             where: {
-                user_id: 2
+                user_id: req.session.user_id
             }
         })
 
@@ -79,9 +81,13 @@ router.get('/login', async (req, res) => {
 });
 
 // go to http://localhost:3001/tagmanager to see
-router.get('/tagmanager', async (req, res) => {
+router.get('/tagmanager', withAuth, async (req, res) => {
+    console.log(req.session.logged_in)
     try {
-        const userData = await Tags.findAll();
+        
+        const userData = await Tags.findAll({
+            where: {user_id: req.session.user_id}
+        });
     
         const tags = userData.map((tag) =>tag.get({ plain: true }));
 
@@ -90,15 +96,16 @@ router.get('/tagmanager', async (req, res) => {
             logged_in: req.session.logged_in
         });
     } catch (err) {
+        console.log(req.session.logged_in)
         res.status(500).json({message: '/tagmanager no good!'})
     };
 });
 
-router.get('/saved', async (req, res) => {
+router.get('/saved', withAuth, async (req, res) => {
     try{
         const userNotes = await Notes.findAll({
             where: {
-                user_id: 1
+                user_id: req.session.user_id
             },
         });
 
@@ -107,7 +114,7 @@ router.get('/saved', async (req, res) => {
 
         const userTags = await Tags.findAll({
             where: {
-                user_id: 1
+                user_id: req.session.user_id
             }
         });
 
