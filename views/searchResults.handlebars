@@ -31,7 +31,7 @@
           <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
             data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-              <form>
+              <form class="form-saveNote" data-noteid={{id}}>
                 <div class="mb-3">
                   <input type="comment" placeholder="Add a comment" class="form-control w-50" id="comment"
                     aria-describedby="comment">
@@ -46,7 +46,7 @@
                     {{/each}}
                   </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-saveNote btn-primary">Save</button>
                 <button type="submit" class="btn btn-danger">Delete</button>
               </form>
             </div>
