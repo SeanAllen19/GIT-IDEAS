@@ -82,8 +82,12 @@ router.get('/login', async (req, res) => {
 
 // go to http://localhost:3001/tagmanager to see
 router.get('/tagmanager', withAuth, async (req, res) => {
+    console.log(req.session.logged_in)
     try {
-        const userData = await Tags.findAll();
+        
+        const userData = await Tags.findAll({
+            where: {user_id: req.session.user_id}
+        });
     
         const tags = userData.map((tag) =>tag.get({ plain: true }));
 
@@ -92,6 +96,7 @@ router.get('/tagmanager', withAuth, async (req, res) => {
             logged_in: req.session.logged_in
         });
     } catch (err) {
+        console.log(req.session.logged_in)
         res.status(500).json({message: '/tagmanager no good!'})
     };
 });
