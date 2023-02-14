@@ -1,5 +1,21 @@
 <div>
+  <ul class="list-group ">
     {{#each tags}}
-    <h1>{{id}} {{title}}</h1>
+      <li class="list-group-item container">
+        <div class="row align-items-start">
+          
+          <h3 class="col-9">{{id}}: {{title}}</h3> 
+          <button type="button" id="deleteTag" class="btn btn-danger col-3">Delete</button>
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter new tag title.."
+          />
+          <button id="updateTag" class="btn btn-warning" type="button">Update Tag</button>
+        </div>
+      </li>
     {{/each}}
+  </ul>
 </div>
