@@ -1,11 +1,12 @@
 body, html {
-    height: 100vh;;
+  height: 3000px;
+  background: linear-gradient(rgba(18, 41, 218, 0.5), rgba(211, 146, 25, 0.5));
 }
 
 /* The hero image */
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(18, 41, 218, 0.5), rgba(211, 146, 25, 0.5)), url("");
+  /* background-image: linear-gradient(rgba(18, 41, 218, 0.5), rgba(211, 146, 25, 0.5)), url(""); */
 
   /* Set a specific height */
   height: 100vh;

@@ -1,6 +1,6 @@
 {{!-- from public js: rendered after search button is clicked, populated by github search results --}}
 {{!-- results are clickable and take the user to 'newNote' page to be viewed/saved --}}
-<div>
+{{!-- <div>
     {{#each resultObject}}
     <div class="card text-center p-4 mb-4 bg-transparent border-opacity-10">
     <div class="card-body">
@@ -11,17 +11,50 @@
 </div>
 
     {{/each}}
-</div>
+</div> --}}
 
-{{!-- <div class="card text-center p-4 mb-4 bg-transparent border-opacity-10">
+ {{#each resultObject}}
+<div class="result-list-div">
+  <div class="card result-card">
+    
     <div class="card-body">
-    <a href="/results/1"><h2 class="card-title">PokemonGo-Map</h2></a>
-    <p class="card-text">🌏 Live visualization of all the pokemon in your area... and more! (shutdown)</p>
-    <a href="https://github.com/AHAAAAAAA/PokemonGo-Map" class="btn btn-primary">Go to Repo</a>
+      <h1><a href="{{link}}">{{name}}</a></h1>
+      <p>{{description}}</p>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapse{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+              Edit
+            </button>
+          </h2>
+          <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <form>
+                <div class="mb-3">
+                  <input type="comment" placeholder="Add a comment" class="form-control w-50" id="comment"
+                    aria-describedby="comment">
+                </div>
+                <div class="mb-3">
+                  <label for="newTag" class="form-label">Change Tag:</label>
+                  <input type="newTag" class="form-control w-25" id="newTag" aria-describedby="newTag">
+                  <select class="form-select w-25" aria-label="Default select example">
+                    <option selected>Choose a Tag</option>
+                    {{#each ../tags}}
+                    <option value="{{id}}">{{title}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
-
- <a href="/results/1"><div>
-    <h1>{{name}}</h1>
-    <p><a href="#">repo-link</a>, repoDescription, language</p>
-    </div></a> --}}
+    {{/each}}
