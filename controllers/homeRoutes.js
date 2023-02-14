@@ -17,7 +17,11 @@ try {
     const searchTerm = req.params.query;
 
     resultObject = [];
-    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=8`;
+
+    const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=10`;
+    console.log(queryStr)
+
+   
 
     const results = await axios.get(queryStr);
 
