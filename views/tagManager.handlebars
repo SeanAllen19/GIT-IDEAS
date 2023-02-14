@@ -5,7 +5,7 @@
         <div class="row align-items-start">
           
           <h3 class="col-9">{{id}}: {{title}}</h3> 
-          <button type="button" id="deleteTag" class="btn btn-danger col-3">Delete</button>
+          <button type="button" id="btn-deleteTag" data-tagid={{id}} class="btn btn-deleteTag btn-danger col-3">Delete</button>
         </div>
         <div class="input-group mb-3">
           <input
@@ -13,9 +13,11 @@
             class="form-control"
             placeholder="Enter new tag title.."
           />
-          <button id="updateTag" class="btn btn-warning" type="button">Update Tag</button>
+          <button id="btn-updateTag" class="btn btn-warning" type="button">Update Tag</button>
         </div>
       </li>
     {{/each}}
   </ul>
 </div>
+
+<script src="./js/tagManager.js"></script>
