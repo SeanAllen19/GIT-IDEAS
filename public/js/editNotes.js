@@ -11,7 +11,7 @@ const deleteNote = async (event) => {
 };
 
 const saveNote = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     console.log(event.target.dataset.noteid);
     const userComment = event.target.querySelector("#comment-textarea").value.trim();
     const newTag = event.target.querySelector("#newTag").value.trim();
@@ -36,7 +36,8 @@ const saveNote = async (event) => {
         let updateNoteRes = await axios.put(`/api/notes/${event.target.dataset.noteid}`, noteBody);
 
         console.log(updateNoteRes.statusText);
-    }
+    };
+
 };
 
 const deleteBtns = document.querySelectorAll(".btn-deleteNote")
