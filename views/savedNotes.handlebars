@@ -1,9 +1,12 @@
+{{!-- renders a logged-in user's saved notes and associated tags with the option to edit each one --}}
+
+{{!-- displays each note as a div --}}
 {{#each notes}}
 <div class="result-list-div">
 <div class="card result-card">
   <div class="card-body">
     <h1>{{fullName}} <span class="badge text-bg-light" style="float:right; font-size:20px;">{{tag.title}}</span></h1>
-    <a href="{{link}}">{{link}}</a>
+    <a href="{{link}}" target="_blank">{{link}}</a>
         <p>
         {{#if language}}
         <b>Language:</b> {{language}} | 
@@ -17,6 +20,8 @@
         </p>
         <p><i>"{{description}}"</i></p>
         <p style="font-size: 20px;">{{comment}}</p>
+
+{{!-- 'Edit' accordion dropdown, for editing a saved note --}}
 <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
@@ -27,19 +32,25 @@
     <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">
         <form class="editNote-form" data-noteid={{id}}>
+            {{!-- editable comment textarea, prefilled with the last saved comment for the note --}}
             <div class="mb-3">
               <textarea class="commentText form-control" id="comment-textarea" rows="3">{{comment}}</textarea>
             </div>
+
             <div class="mb-3">
                 <label for="newTag" class="form-label">Change Tag:</label>
+                {{!-- new tag input, trumps tag dropdown when saved to note --}}
                 <input type="newTag" class="newTag form-control w-25" id="newTag" placeholder="new tag" aria-describedby="newTag">
                 <select class="chooseTag form-select w-25" id="chooseTag" aria-label="tag-select">
+                    {{!-- uses a note's saved tag as the default tag value --}}
                     <option value="{{tag.id}}" selected>{{tag.title}}</option>
+                    {{!-- uses all of the user's created tags as options for changing the tag on a note --}}
                     {{#each ../tags}}
                     <option value="{{id}}">{{title}}</option>
                     {{/each}}
                 </select>
             </div>
+
             <button type="submit" data-noteid={{id}} class="btn btn-saveNote btn-primary">Save</button>
             <button type="click" data-noteid={{id}} class="btn btn-deleteNote btn-danger" style="float:right;">Delete</button>
         </form>
