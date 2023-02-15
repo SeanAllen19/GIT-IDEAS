@@ -1,6 +1,6 @@
 body, html {
-  height: 3000px;
-  background: linear-gradient(rgba(18, 41, 218, 0.5), rgba(211, 146, 25, 0.5));
+  background-image: linear-gradient(rgba(18, 41, 218, 0.5), rgba(211, 146, 25, 0.5));
+  background-attachment: fixed;
 }
 
 /* The hero image */
@@ -22,7 +22,7 @@ body, html {
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -42,13 +42,20 @@ body, html {
   background: transparent !important;
 }
 
+/* makes tag cards even smaller */
+.tag-card {
+  width: 40%;
+  margin: 20px;
+  background: transparent !important;
+}
+
 /* makes accordion button look less weird */
 .accordion-button {
   width: auto !important;
   box-shadow: none !important;
 }
 
-/* erases colors we dont want on our accordions */
+/* erases colors we dont want on our accordions + changes nav-dropdown size */
 * {
   --bs-accordion-bg: transparent !important;
   --bs-accordion-active-bg: transparent !important;
@@ -56,6 +63,7 @@ body, html {
   --bs-dropdown-min-width: 7rem !important;
 }
 
+/* keeps the dropdown nav list in view */
 .nav-btns {
   margin-right: 40px;
 }

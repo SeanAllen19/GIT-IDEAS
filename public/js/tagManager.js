@@ -1,11 +1,10 @@
 const deleteTag = async (event) => {
-  console.log(event.target.dataset.tagid);
-  console.log("Deleting tag....");
+
   const response = await axios.delete(
     `/api/tags/${event.target.dataset.tagid}`
   );
-  if ((response.statustext = "ok")) {
-    console.log("Tag removed");
+  if (response.statustext = "OK") {
+    document.location.replace('/tagmanager');
   } else {
     alert(response.statusText);
   }

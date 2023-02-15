@@ -8,11 +8,13 @@ var resultObject = [];
 // render homepage template
 router.get('/', async (req, res) => {
     res.render('homepage', {
+        homepage: true,
         user_id: req.session.user_id,
         logged_in: req.session.logged_in
     });
 });
 
+// makes a search query to github and pushes desired results into global variable before taking the user to the /results page
 router.get('/search/:query', async (req, res) => {
 try {
     resultObject = [];
@@ -67,6 +69,7 @@ try {
 }
 })
 
+// renders search results within the global resultObject onto searchResults page
 router.get('/results', async (req, res) => {
     try{
         const renderObject = {
@@ -92,37 +95,12 @@ router.get('/results', async (req, res) => {
     }
 });
 
-// render newNote template from search result id
-// router.get('/results/:id', async (req, res) => {
-//     try{
-//         const objectOne = resultObject[0];
-//         console.log('ObjectOne', objectOne);
-
-//         const userTags = await Tags.findAll({
-//             where: {
-//                 user_id: req.session.user_id
-//             }
-//         })
-
-//         const tags = userTags.map((tag) =>tag.get({ plain: true }));
-
-//         res.render('notableResult', {
-//             tags,
-//             objectOne,
-//             user_id: req.session.user_id,
-//             logged_in: req.session.logged_in
-//         });
-//     } catch (err) {
-//         res.status(500).json({message: '/results/:id no good!'})
-//     }
-// });
-
 // render login template
 router.get('/login', async (req, res) => {
     res.render('login');
 });
 
-// go to http://localhost:3001/tagmanager to see
+// displays all of the current user's tags
 router.get('/tagmanager', withAuth, async (req, res) => {
     console.log(req.session.logged_in)
     try {
@@ -144,6 +122,7 @@ router.get('/tagmanager', withAuth, async (req, res) => {
     };
 });
 
+// displays all of the current user's notes and makes all of the user's tags available for note editing
 router.get('/saved', withAuth, async (req, res) => {
     try{
         const userNotes = await Notes.findAll({

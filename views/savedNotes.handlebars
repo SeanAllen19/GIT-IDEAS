@@ -2,17 +2,8 @@
 <div class="result-list-div">
 <div class="card result-card">
   <div class="card-body">
-    <h1>{{fullName}}</h1>
-<div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
-        View/Edit 
-      </button>
-    </h2>
-    <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-        <a href="{{link}}">{{link}}</a>
+    <h1>{{fullName}} <span class="badge text-bg-light" style="float:right; font-size:20px;">{{tag.title}}</span></h1>
+    <a href="{{link}}">{{link}}</a>
         <p>
         {{#if language}}
         <b>Language:</b> {{language}} | 
@@ -24,14 +15,24 @@
         | <b>License:</b> {{license}}
         {{/if}}
         </p>
-        <p>"{{description}}"</p>
+        <p><i>"{{description}}"</i></p>
+        <p style="font-size: 20px;">{{comment}}</p>
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+        Edit 
+      </button>
+    </h2>
+    <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
         <form class="editNote-form" data-noteid={{id}}>
             <div class="mb-3">
               <textarea class="commentText form-control" id="comment-textarea" rows="3">{{comment}}</textarea>
             </div>
             <div class="mb-3">
                 <label for="newTag" class="form-label">Change Tag:</label>
-                <input type="newTag" class="newTag form-control w-25" id="newTag" aria-describedby="newTag">
+                <input type="newTag" class="newTag form-control w-25" id="newTag" placeholder="new tag" aria-describedby="newTag">
                 <select class="chooseTag form-select w-25" id="chooseTag" aria-label="tag-select">
                     <option value="{{tag.id}}" selected>{{tag.title}}</option>
                     {{#each ../tags}}

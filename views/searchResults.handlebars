@@ -40,7 +40,7 @@
           <h2 class="accordion-header" id="flush-headingOne">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#flush-collapse{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
-              Edit
+              Save
             </button>
           </h2>
           <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
@@ -51,8 +51,8 @@
                   <textarea class="commentText form-control w-50" id="comment-textbox" placeholder="Add a comment" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
-                  <label for="newTag" class="form-label">Change Tag:</label>
-                  <input type="newTag" class="form-control w-25" id="newTag" aria-describedby="newTag">
+                  <label for="newTag" class="form-label">Add Tag:</label>
+                  <input type="newTag" class="form-control w-25" id="newTag" placeholder="new tag" aria-describedby="newTag">
                   <select class="form-select w-25" id="chooseTag" aria-label="Default select example">
                     <option value="null" selected>Choose a Tag</option>
                     {{#each ../tags}}
@@ -61,7 +61,6 @@
                   </select>
                 </div>
                 <button type="submit" class="btn btn-saveNote btn-primary">Save</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
               </form>
             </div>
           </div>
