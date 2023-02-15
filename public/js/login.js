@@ -25,7 +25,7 @@ const signupFormHandler = async (event) => {
   if (username && email && password) {
     const response = await axios.post('/api/users',{username, email, password});
 
-    if (response.ok) {
+    if (response.statusText == 'OK') {
       document.location.replace('/');
     } else {
       alert(response.statusText);
@@ -40,3 +40,6 @@ document
 document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
+
+
+  
