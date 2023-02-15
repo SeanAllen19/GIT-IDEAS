@@ -1,6 +1,6 @@
 # Git Ideas 
 
-
+Git Ideas is an app that allows the user to se
 
 WhichWord is Wordle clone made with pure Javascript, HTML, and CSS. When you visit the WhichWord website, you are introduced to a game title with a Easy, Medium or Hard selection. Easy being a 5 letter word, Medium being a 6 letter word and Hard being a 7 letter word. Each box can hold one letter, and so you guess at the answer by typing in letters word and pressing 'Enter'. There aren't any clues up front, so any letter will do as an initial guess.
 
@@ -93,23 +93,11 @@ Jawsdb -
 
 ## Development
 
-We were assigned together to work on a project and with most ideas we brainstormed and shared ideas.
-
-![Dominiques sketch](./assets/Dom%201st%20sketch.jpg)
-
-![Bretts sketch](./assets/Bretts%201st%20sketch.jpg)
-
 <br>     
 
 ## Saved for Later
 
-Allow for a letter choice to only highlight a single instance of that letter if it appears in the word
 
-Add an API that delivers quotes based on the correct word
-
-Call on additional features in the dictionary API (e.g., thesaurus and etymology)
-
-Call on additional freatures in the song API (e.g., a link to hear the song play, view album or artist artwork)
 
 <br>     
 

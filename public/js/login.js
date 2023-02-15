@@ -1,5 +1,6 @@
 const loginFormHandler = async (event) => {
-  event.preventDefault();
+  try {
+    event.preventDefault();
 
   const email = document.querySelector('#exampleInputEmail1').value.trim();
   const password = document.querySelector('#exampleInputPassword1').value.trim();
@@ -7,16 +8,21 @@ const loginFormHandler = async (event) => {
   if (email && password) {
     const response = await axios.post(`/api/users/login`,{email, password});
 
-    if (response.ok) {
+    if (response.statusText == 'OK') {
       document.location.replace('/');
     } else {
       alert(response.statusText);
     }
   }
+} catch (err) {
+  console.log(err);
+  alert('Login failed')
+}
 };
 
 const signupFormHandler = async (event) => {
-  event.preventDefault();
+  try {
+    event.preventDefault();
 
   const username = document.querySelector('#exampleInputUsername2').value.trim();
   const email = document.querySelector('#exampleInputEmail2').value.trim();
@@ -31,6 +37,10 @@ const signupFormHandler = async (event) => {
       alert(response.statusText);
     }
   }
+} catch (err) {
+  console.log(err);
+  alert('Signup failed')
+}
 };
 
 document
