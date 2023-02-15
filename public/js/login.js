@@ -7,7 +7,7 @@ const loginFormHandler = async (event) => {
   if (email && password) {
     const response = await axios.post(`/api/users/login`,{email, password});
 
-    if (response.statusText == 'OK') {
+    if (response.ok) {
       document.location.replace('/');
     } else {
       alert(response.statusText);
