@@ -5,6 +5,7 @@ const withAuth = require('../../utils/auth');
 // Inserts new note into database by session user_id
 router.post('/', withAuth, async (req, res) => {
   try {
+    console.log(req.body)
     const newNote = await Notes.create({
       ...req.body,
       user_id: req.session.user_id,

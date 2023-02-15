@@ -18,8 +18,23 @@
   <div class="card result-card">
     
     <div class="card-body">
-      <h1><a href="{{link}}">{{name}}</a></h1>
-      <p>{{description}}</p>
+      <h1 id="repo-fullName">{{fullName}}</h1>
+      <a href="{{link}}" id="repo-link">{{link}}</a>
+        <p>
+        {{#if language}}
+        <b>Language:</b> <b id="repo-language">{{language}}</b> | 
+        {{/if}}
+        {{#if stargazers_count}}
+        <b>Stargazers:</b> {{stargazers_count}} 
+        {{/if}}
+        {{#if license}}
+        | <b>License:</b> {{license}}
+        {{/if}}
+        </p>
+        {{#if description}}
+        <p>"{{description}}"</p>
+        {{/if}}
+      {{!-- {{#if logged_in}} --}}
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingOne">
@@ -31,16 +46,15 @@
           <div id="flush-collapse{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
             data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
-              <form class="form-saveNote" data-noteid={{id}}>
+              <form class="saveNote-form" data-repoinfo="{{repoInfo}}" data-noteid={{id}}>
                 <div class="mb-3">
-                  <input type="comment" placeholder="Add a comment" class="form-control w-50" id="comment"
-                    aria-describedby="comment">
+                  <textarea class="commentText form-control w-50" id="comment-textbox" placeholder="Add a comment" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
                   <label for="newTag" class="form-label">Change Tag:</label>
                   <input type="newTag" class="form-control w-25" id="newTag" aria-describedby="newTag">
-                  <select class="form-select w-25" aria-label="Default select example">
-                    <option selected>Choose a Tag</option>
+                  <select class="form-select w-25" id="chooseTag" aria-label="Default select example">
+                    <option value="null" selected>Choose a Tag</option>
                     {{#each ../tags}}
                     <option value="{{id}}">{{title}}</option>
                     {{/each}}
@@ -53,8 +67,11 @@
           </div>
         </div>
       </div>
+      {{!-- {{/if}} --}}
     </div>
 
   </div>
 </div>
-    {{/each}}
+{{/each}}
+
+<script src="./js/addNotes.js"></script>

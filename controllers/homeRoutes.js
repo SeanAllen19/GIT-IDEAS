@@ -8,35 +8,58 @@ var resultObject = [];
 // render homepage template
 router.get('/', async (req, res) => {
     res.render('homepage', {
+        user_id: req.session.user_id,
         logged_in: req.session.logged_in
     });
 });
 
 router.get('/search/:query', async (req, res) => {
 try {
-    const searchTerm = req.params.query;
-
     resultObject = [];
-
+    const searchTerm = req.params.query;
     const queryStr = `https://api.github.com/search/repositories?q=${searchTerm}&per_page=10`;
-    console.log(queryStr)
-
-   
 
     const results = await axios.get(queryStr);
 
     results.data.items.forEach((item) => {
+        if (item.license) {
         resultObject.push(
             {
-            name: item.name, 
-            id: item.id,
-            link: item.html_url,
-            description: item.description
-            
+                id: item.id,
+                fullName: item.full_name,
+                link: item.html_url,
+                description: item.description,
+                language: item.language,
+                license: item.license.name,
+                stargazers_count: item.stargazers_count,
+                repoInfo: JSON.stringify({
+                    fullName: item.full_name,
+                    link: item.html_url,
+                    description: item.description,
+                    language: item.language,
+                    license: item.license.name,
+                    stargazers_count: item.stargazers_count})
             }
         );
+        } else {
+            resultObject.push(
+                {
+                    id: item.id,
+                    fullName: item.full_name,
+                    link: item.html_url,
+                    description: item.description,
+                    language: item.language,
+                    stargazers_count: item.stargazers_count,
+                    repoInfo: JSON.stringify({
+                        fullName: item.full_name,
+                        link: item.html_url,
+                        description: item.description,
+                        language: item.language,
+                        stargazers_count: item.stargazers_count})
+                }
+            );
+        }
     });
-    console.log(resultObject)
 
     res.redirect('/results');
 } catch (err) {
@@ -45,36 +68,51 @@ try {
 })
 
 router.get('/results', async (req, res) => {
-    res.render('searchResults', {
-        resultObject,
-        logged_in: req.session.logged_in
-    });
-});
-
-// render newNote template from search result id
-router.get('/results/:id', async (req, res) => {
     try{
-        const objectOne = resultObject[0];
-        console.log('ObjectOne', objectOne);
-
         const userTags = await Tags.findAll({
             where: {
                 user_id: req.session.user_id
             }
-        })
+        });
 
         const tags = userTags.map((tag) =>tag.get({ plain: true }));
 
-        res.render('notableResult', {
+
+        res.render('searchResults', {
+            resultObject,
             tags,
-            objectOne,
             user_id: req.session.user_id,
             logged_in: req.session.logged_in
         });
     } catch (err) {
-        res.status(500).json({message: '/results/:id no good!'})
+        res.status(500).json({message: '/results no good'})
     }
 });
+
+// render newNote template from search result id
+// router.get('/results/:id', async (req, res) => {
+//     try{
+//         const objectOne = resultObject[0];
+//         console.log('ObjectOne', objectOne);
+
+//         const userTags = await Tags.findAll({
+//             where: {
+//                 user_id: req.session.user_id
+//             }
+//         })
+
+//         const tags = userTags.map((tag) =>tag.get({ plain: true }));
+
+//         res.render('notableResult', {
+//             tags,
+//             objectOne,
+//             user_id: req.session.user_id,
+//             logged_in: req.session.logged_in
+//         });
+//     } catch (err) {
+//         res.status(500).json({message: '/results/:id no good!'})
+//     }
+// });
 
 // render login template
 router.get('/login', async (req, res) => {
@@ -94,6 +132,7 @@ router.get('/tagmanager', withAuth, async (req, res) => {
 
         res.render('tagManager', {
             tags,
+            user_id: req.session.user_id,
             logged_in: req.session.logged_in
         });
     } catch (err) {
