@@ -69,21 +69,24 @@ try {
 
 router.get('/results', async (req, res) => {
     try{
-        const userTags = await Tags.findAll({
-            where: {
-                user_id: req.session.user_id
-            }
-        });
-
-        const tags = userTags.map((tag) =>tag.get({ plain: true }));
-
-
-        res.render('searchResults', {
-            resultObject,
-            tags,
+        const renderObject = {
+            resultObject, 
             user_id: req.session.user_id,
             logged_in: req.session.logged_in
-        });
+        };
+
+        if (req.session.logged_in) {
+            const userTags = await Tags.findAll({
+                where: {
+                    user_id: req.session.user_id
+                }
+            });
+
+            // const tags = userTags.map((tag) =>tag.get({ plain: true }));
+            renderObject.tags = userTags.map((tag) =>tag.get({ plain: true }));
+        }
+
+        res.render('searchResults', renderObject);
     } catch (err) {
         res.status(500).json({message: '/results no good'})
     }

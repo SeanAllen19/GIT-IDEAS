@@ -29,7 +29,26 @@
         </form>
 
 
-        <a href="/login"><button class="btn-lg btn-primary btn">LOG IN HERE</button></a>
+        <div class="btn-group nav-btns" role="group" aria-label="Button group with nested dropdown">
+          {{#if logged_in}}
+          <button type="button" class="btn logout-btn btn-primary">Logout</button>
+          {{else}}
+          <a href="/login" class="btn btn-primary">Login</a>
+          {{/if}}
+
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              More
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/saved">Saved</a></li>
+              <li><a class="dropdown-item" href="/tagmanager">Tag Manager</a></li>
+              <li><a class="dropdown-item" href="/results">Last Search</a></li>
+            </ul>
+          </div>
+        </div>
+
+        {{!-- <a href="/login"><button class="btn btn-primary btn">LOGIN</button></a> --}}
 
       </div>
     </nav>
@@ -50,6 +69,7 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script src="/js/testgitCalls.js"></script>
+  <script src="/js/logout.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </body>
 

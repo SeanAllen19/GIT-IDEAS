@@ -18,9 +18,9 @@ const saveNote = async (event) => {
         let createNoteRes = await axios.post(`/api/notes`, repoObject);
 
         if (createNoteRes.statusText = 'OK') {
-          document.location.replace('/results');
+        document.location.replace('/results');
         } else {
-          alert(createNoteRes.statusText);
+        alert(createNoteRes.statusText);
         };
 
     } else {
