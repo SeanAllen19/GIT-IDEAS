@@ -1,8 +1,19 @@
-# WhichWord 
+# Git Ideas 
+
+
 
 WhichWord is Wordle clone made with pure Javascript, HTML, and CSS. When you visit the WhichWord website, you are introduced to a game title with a Easy, Medium or Hard selection. Easy being a 5 letter word, Medium being a 6 letter word and Hard being a 7 letter word. Each box can hold one letter, and so you guess at the answer by typing in letters word and pressing 'Enter'. There aren't any clues up front, so any letter will do as an initial guess.
 
 <br>   
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+
+<br>
 
 ## Getting Started
 
@@ -20,7 +31,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 6. Type git clone, and then paste the URL you copied in Step 3.
 
-7. git clone https://github.com/SeanAllen19/Word-Guessing-Game.git
+7. git clone https://github.com/SeanAllen19/GIT-IDEAS.git
 
 8. Press Enter and a new local cloned repository will be created.   
     
@@ -28,14 +39,23 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Screenshots
 
-### Start Page
-![start page](./assets/whichword%20title.png)
+### Home Page
+![home page](./assets/GitIdeas_Homepage.png)
 
-### Game Page
-![gameplay](./assets/whichword%20gameplay.png)
+### Navigation Bar
+![nav bar](./assets/GitIdeas_Nav.png)
 
-### End Screen Page
-![end page](./assets/whichword%20end%20page.png)
+### Login and Sign Up Page
+![login and sign up](./assets/GitIdeas_Login_Signup.png)
+
+### Results Page
+![results page](./assets/GitIdeas_Results.png)
+
+### Save and Edit Page
+![save and edit page](./assets/GitIdeas_SaveandEdit.png)
+
+### Saved Results Page
+![results page](./assets/GitIdeas_Saved.png)
 
 <br>      
     
@@ -43,29 +63,31 @@ These instructions will get you a copy of the project up and running on your loc
 
 GitHub - https://github.com/
 
-Random Words API - https://rapidapi.com/sheharyar566/api/random-words5
+GitHub Rest API - 
 
-Genius - Song Lyrics API - https://rapidapi.com/Glavier/api/genius-song-lyrics1/
+Axios - 
 
-Dictionary by API Ninjas API - https://rapidapi.com/apininjas/api/dictionary-by-api-ninjas/
+Handlebars - 
 
-Materialize, CSS Framework - https://materializecss.com/about.html
+Bootstrap -
 
-Inter, Google Fonts - https://fonts.google.com/specimen/Inter
+Mysql - 
 
-Coolers, Color Palette generator - https://coolors.co/
+Sequelize - 
+
+Jawsdb - 
 
 <br>    
 
 ## Authors
      
-  Sean Allen - [GitHub](https://github.com/SeanAllen19)
+  Rebecca Girndt - [GitHub]()
   
-  Jeremy Crouthamel - [GitHub](https://github.com/Leyden05)
+  Michael Smith - [GitHub]()
   
-  Brett Nachman - [GitHub](https://github.com/brettnachman)
+  Brett Nachman - [GitHub]()
   
-  Dominique Nix - [GitHub](https://github.com/Dominique216)
+  Sean Allen - [GitHub]()
   
   <br>   
 
@@ -93,14 +115,8 @@ Call on additional freatures in the song API (e.g., a link to hear the song play
 
 ## Acknowledgements
 
-Thank you to all of our friends, online and IRL for all of the help and motivation!!
+Thank you to all of our friends, online and IRL, for the help and motivation!!
 
 Canva - https://www.canva.com/
 
-Double D - https://www.youtube.com/@DoubleDYouTube
 
-Ian Leneham - https://www.youtube.com/channel/UCU5seEXTjpF4RRfQn-4242A
-
-Freecodecamp - https://www.freecodecamp.org/
-
-Alabama Richmond
