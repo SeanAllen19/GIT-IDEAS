@@ -21,12 +21,13 @@
       <div class="container-fluid">
         <a href='/' class="navbar-brand" style="color: white; font-size: 1.6rem; font-weight:bold">GIT IDEAS</a>
 
-
+      {{#unless homepage}}
         <form class="d-flex " role="search" id="repo-search-form">
-          <input class="form-control me-2" style="width: 45vw;" type="search" placeholder="Search" aria-label="Search"
+          <input class="form-control me-2" style="width: 50vw;" type="search" placeholder="Search" aria-label="Search"
             id="repo-search-input">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
+      {{/unless}}
 
 
         <div class="btn-group nav-btns" role="group" aria-label="Button group with nested dropdown">
