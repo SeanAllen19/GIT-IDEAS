@@ -53,6 +53,11 @@ body, html {
   --bs-accordion-bg: transparent !important;
   --bs-accordion-active-bg: transparent !important;
   --bs-accordion-btn-focus-border-color: transparent !important;
+  --bs-dropdown-min-width: 7rem !important;
+}
+
+.nav-btns {
+  margin-right: 40px;
 }
 
 #comment-textarea {
