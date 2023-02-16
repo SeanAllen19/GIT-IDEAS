@@ -1,4 +1,4 @@
-{{!-- renders after search button is clicked, populated by github search results and, if logged-in, the option to add a result as a note --}}
+{{!-- renders after search button is clicked, populated by github search results and, if logged-in, the option to add a result as a note --}}   
 
 {{!-- displays each search result as individual divs --}}
  {{#each resultObject}}
@@ -7,8 +7,7 @@
     <div class="card-body">
       <h1 id="repo-fullName">{{fullName}}</h1>
 
-      <a href="{{link}}" target="_blank" id="repo-link">{{link}}</a>
-
+      <p><b>Link to Repository: </b><a href="{{link}}" target="_blank" id="repo-link">{{link}}</a></p>
         <p>
         {{#if language}}
         <b>Language:</b> <b id="repo-language">{{language}}</b> | 
@@ -21,7 +20,7 @@
         {{/if}}
         </p>
         {{#if description}}
-        <p>"{{description}}"</p>
+        <b>Description: </b><p>"{{description}}"</p>
         {{/if}}
 
       {{!-- if user is logged-in, shows the 'Save' accordion for the option to save a search result as a note --}}
@@ -29,7 +28,7 @@
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button collapsed btn btn-secondary btn-sm" type="button" data-bs-toggle="collapse"
               data-bs-target="#flush-collapse{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
               Save
             </button>
