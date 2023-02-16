@@ -9,6 +9,7 @@ Git Ideas is an app that allows the user to search GitHub for project inspiratio
 ## Table of Contents
 
 - [Getting Started](#getting-started)
+- [Schema](#schema)
 - [Screenshots](#screenshots)
 - [Built Using](#built-using)
 - [Authors](#authors)
@@ -39,6 +40,11 @@ These instructions will get you a copy of the project up and running on your loc
 7. Press Enter and a new local cloned repository will be created.   
     
 <br>  
+
+## Schema
+![schema](./assets/schema.png)
+
+<br>
 
 ## Screenshots
 
