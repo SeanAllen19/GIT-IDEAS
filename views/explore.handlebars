@@ -1,0 +1,24 @@
+{{!-- ! future development ! renders non-editable notes with the note-creator's username, comment, and the note's tag if it has one --}}
+{{#each notes}}
+<div class="result-list-div">
+<div class="card result-card">
+  <div class="card-body">
+    <h1>{{fullName}} <span class="badge text-bg-light" style="float:right; font-size:20px;">{{tag.title}}</span></h1>
+    <a href="{{link}}" target="_blank">{{link}}</a>
+        <p>
+        {{#if language}}
+        <b>Language:</b> {{language}} | 
+        {{/if}}
+        {{#if stargazers_count}}
+        <b>Stargazers:</b> {{stargazers_count}} 
+        {{/if}}
+        {{#if license}}
+        | <b>License:</b> {{license}}
+        {{/if}}
+        </p>
+        <p><i>"{{description}}"</i></p>
+        <p style="font-size: 20px;">{{comment}}</p>
+        </div>
+    </div>
+</div>
+{{/each}}

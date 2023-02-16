@@ -1,25 +1,14 @@
-{{!-- from public js: rendered after search button is clicked, populated by github search results --}}
-{{!-- results are clickable and take the user to 'newNote' page to be viewed/saved --}}
-{{!-- <div>
-    {{#each resultObject}}
-    <div class="card text-center p-4 mb-4 bg-transparent border-opacity-10">
-    <div class="card-body">
-    <a href="/results/1"><h2 class="card-title">{{name}}</h2></a>
-    <p class="card-text">{{description}}</p>
-    <a href="{{link}}" class="btn btn-primary">Go to Repo</a>
-  </div>
-</div>
+{{!-- renders after search button is clicked, populated by github search results and, if logged-in, the option to add a result as a note --}}
 
-    {{/each}}
-</div> --}}
-
+{{!-- displays each search result as individual divs --}}
  {{#each resultObject}}
 <div class="result-list-div">
   <div class="card result-card">
-    
     <div class="card-body">
       <h1 id="repo-fullName">{{fullName}}</h1>
-      <a href="{{link}}" id="repo-link" target="_blank">{{link}}</a>
+
+      <a href="{{link}}" target="_blank" id="repo-link">{{link}}</a>
+
         <p>
         {{#if language}}
         <b>Language:</b> <b id="repo-language">{{language}}</b> | 
@@ -34,6 +23,8 @@
         {{#if description}}
         <p>"{{description}}"</p>
         {{/if}}
+
+      {{!-- if user is logged-in, shows the 'Save' accordion for the option to save a search result as a note --}}
       {{#if ../logged_in}}
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
@@ -52,9 +43,12 @@
                 </div>
                 <div class="mb-3">
                   <label for="newTag" class="form-label">Add Tag:</label>
+                  {{!-- new tag input, trumps tag dropdown when the note is saved --}}
                   <input type="newTag" class="form-control w-25" id="newTag" placeholder="new tag" aria-describedby="newTag">
                   <select class="form-select w-25" id="chooseTag" aria-label="Default select example">
+                    {{!-- default option is to leave the tag value null --}}
                     <option value="null" selected>Choose a Tag</option>
+                    {{!-- uses all of the user's created tags as options for saving a tag to the note --}}
                     {{#each ../tags}}
                     <option value="{{id}}">{{title}}</option>
                     {{/each}}
