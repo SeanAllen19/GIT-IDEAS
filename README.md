@@ -1,51 +1,135 @@
-<!-- Brett's Note: I'd like to take this on if possible. I love doing READMEs and would appreciate being able to blow thit one out into something nice.  -->
-
-
-# GIT-IDEAS
+# Git Ideas 
 
 ## Description
 
-> Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:  
->   
-> - What was your motivation?  
-> - Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")  
-> - What problem does it solve?  
-> - What did you learn?  
+Git Ideas is an app that allows the user to search GitHub for project inspiration. Users can search GitHub repositories by keyword, and search results can be annotated and saved into a user's personal library. Users can create unique tags (e.g., Project 1) to further organize their library. All saved items can be further edited or deleted once in the user's library. The user's library and all associated tags and comments are password protected, and the user must be logged in to access the app's functionality.
+
+<br>   
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
+- [Getting Started](#getting-started)
+- [Screenshots](#screenshots)
+- [Built Using](#built-using)
+- [Authors](#authors)
+- [Saved for Later](#saved-for-later)
+- [Acknowledgments](#acknowledgments)
 - [License](#license)
 
-## Installation
+<br>
 
-> What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+## Getting Started
 
-## Usage
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-> Provide instructions and examples for use. Include screenshots as needed.
->   
-> To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:  
->   
->   `![alt text](assets/images/screenshot.png)`
+1. Within GitHub, navigate to the main page of the repository.
 
+2. Click the Clone or download button.
 
-## Credits
+3. Copy the clone URL for the repository.
 
-> List your collaborators, if any, with links to their GitHub profiles.
-> 
-> If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-> 
-> If you followed tutorials, include links to those here as well.
+4. Open Terminal or CMD Prompt(Windows).
 
-Full-Stack Blog - [Professional README Guide](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
+5. Change your current working directory to the location where you'd like the cloned directory be stored.
+
+6. Type git clone, and then paste the URL you copied in Step 3.
+
+          git clone https://github.com/SeanAllen19/GIT-IDEAS.git
+
+7. Press Enter and a new local cloned repository will be created.   
+    
+<br>  
+
+## Screenshots
+
+### Home page
+![home page](./assets/GitIdeas_Homepage.png)
+
+### Navigation Bar
+![nav bar](./assets/GitIdeas_Nav.png)
+
+### Login and Sign Up Page
+![login and sign up](./assets/GitIdeas_Login_Signup.png)
+
+### Results Page
+![results page](./assets/GitIdeas_Results.png)
+
+### Save and Edit Page
+![save and edit page](./assets/GitIdeas_SaveandEdit.png)
+
+### Saved Results Page
+![results page](./assets/GitIdeas_Saved.png)
+
+<br>      
+    
+## Built Using
+
+GitHub - https://github.com/
+
+GitHub Rest API - https://docs.github.com/en/rest
+
+Axios - https://axios-http.com/docs/intro
+
+Handlebars - https://handlebarsjs.com/
+
+Bootstrap - https://getbootstrap.com/
+
+Mysql - https://www.mysql.com/
+
+Sequelize - https://sequelize.org/
+
+Jawsdb - https://www.jawsdb.com/
+
+<br>    
+
+## Authors
+     
+Rebecca Girndt - [GitHub](https://github.com/Re-Gi)
+  
+Michael Smith - [GitHub](https://github.com/AustinBQ02)
+  
+Brett Nachman - [GitHub](https://github.com/brettnachman)
+  
+Sean Allen - [GitHub](https://github.com/SeanAllen19)
+  
+  <br>   
+
+## Saved for Later
+
+ Refine results returned by GitHub
+
+ Pull from Codepen and other sources
+
+ Improve handling of tags and saved projects
+
+ Add results filtering
+
+ Add results pagination
+
+ Develop admin tools to manage tags, notes, and users
+
+ Implement stricter limits on tags and notes 
+
+<br>     
+
+## Acknowledgments
+
+The Nighttime Study Group
+
+Ian Darland
+
+Leah Nelson
+
+Diem Ly
+
+Shaun Roshan
+
+Canva - https://www.canva.com/
+
+<br>
 
 ## License
 
 Please see LICENSE file.
 
 ![MIT License](https://img.shields.io/github/license/AustinBQ02/c03-password-generator)
-
----
