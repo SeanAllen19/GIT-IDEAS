@@ -1,36 +1,44 @@
-{{#each tags}}
-  <div class="result-list-div">
-    <div class="card tag-card">
-      <div class="card-body">
-        <h3>{{id}}: {{title}}
-        <span><button
-          type="button"
-          id="btn-deleteTag"
-          data-tagid={{id}}
-          class="btn btn-deleteTag btn-danger" 
-          style="float:right;"
-        >Delete</button></span>
-        </h3>
-
-        {{!-- <form class="mb-3 form-updateTag">
-            <div>
-                <textarea class = "newTagText form-control"
-                id="newTag-textarea" rows="1">{{title}}</textarea>
-            </div>
-
- 
- 
-          {{!-- <input
-            type="text"
-            class="form-control"
-            placeholder="Enter new tag title.."
-            data-editTag_id={{id}}
-          /> --}}
-        {{!-- <button type="submit" data-update_id={{id}} class="btn btn-warning btn-updateTag">Update Tag</button> 
-        </form> --}}
-      </div>
-    </div>
+<div class="container border mx-auto mt-5 p-5">
+  {{!-- add a new tag --}}
+  <div class="input-group row mb-5">
+    <span class="input-group-text col-4">Create New Tag:</span>
+    <input
+      type="text"
+      aria-label="New Tag Text"
+      class="form-control col-6"
+      placeholder="Enter new tag text"
+    />
+    <button class="btn btn-success col-2" type="button">Create</button>
   </div>
-{{/each}}
+
+  {{#each tags}}
+  
+    <div class="input-group mb-3 row">
+      {{!-- existing tag and edit input field --}}
+      <span class="input-group-text col-4">{{title}}</span>
+      <input
+        id="editTagInput"
+        type="text"
+        class="form-control col-4 editTagInput"
+        placeholder="Enter updated tag text"
+        data-editTag={{id}}
+      />
+      {{! edit existing tag }}
+      <button
+        class="btn btn-warning col-2 btn-updateTag"
+        type="submit"
+        data-tagid={{id}}
+      >Edit</button>
+      {{! delete existing tag }}
+      <button
+        class="btn btn-danger col-2 btn-deleteTag"
+        type="button"
+        id="btn-deleteTag"
+        data-tagid={{id}}
+      >Delete</button>
+    </div>
+
+  {{/each}}
+</div>
 
 <script src="./js/tagManager.js"></script>
